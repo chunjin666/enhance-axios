@@ -1,0 +1,27 @@
+{
+  "name": "enhance-axios",
+  "version": "1.0.0",
+  "description": "axios增强封装",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
+  "scripts": {
+    "dev": "tsc --watch",
+    "test": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:chunjine/enhance-axios.git"
+  },
+  "keywords": [
+    "axios"
+  ],
+  "author": "chunjin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
