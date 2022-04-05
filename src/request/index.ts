@@ -10,7 +10,7 @@ const request = enhanceAxios<ServerResponseNormal<any>>(axios).create({
   baseURL: BaseURL,
   handleError: true,
   showLoading: true,
-  extract: true,
+  extractResponse: true,
 })
 
 request.interceptors.request.use((config) => {

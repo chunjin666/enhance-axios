@@ -33,7 +33,7 @@ export function replaceUrlParams(options: CustomRequestConfig): void {
 export function getResponseData(
   response: AxiosResponse<ServerResponseNormal<any> | Blob | ArrayBuffer | string, any>
 ): Blob | ArrayBuffer | string | any | typeof response {
-  if (response.config.extract) {
+  if (response.config.extractResponse) {
     if (['text', 'blob', 'arraybuffer'].includes(response.config.responseType || '')) return response.data
     return (response.data as ServerResponseNormal<any>).data
   } else {

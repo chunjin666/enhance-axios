@@ -5,8 +5,8 @@ export interface CustomRequestConfig<RequestData = any, ExtractResponse extends 
   handleError?: boolean
   /** 是否显示 loading 状态 */
   showLoading?: boolean
-  /** 是否只返回提取过的数据 */
-  extract?: ExtractResponse
+  /** 是否返回提取后的有效数据 */
+  extractResponse?: ExtractResponse
 }
 
 /**

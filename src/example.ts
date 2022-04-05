@@ -20,7 +20,7 @@ request.get<TestResponse>('/api/test').then((res) => {
   console.log(res.a)
 })
 // 常规使用2：返回服务器端原始数据
-request.get<TestResponse>('/api/test', { extract: false }).then((res) => {
+request.get<TestResponse>('/api/test', { extractResponse: false }).then((res) => {
   console.log(res.data.a)
 })
 
@@ -34,7 +34,7 @@ getMethod1(params).then((res) => {
   console.log(res.a)
 })
 // 封装2：封装为返回服务器端原始数据
-const getMethod2 = request.getWrap<TestParams, TestResponse>('/api/test', { extract: false })
+const getMethod2 = request.getWrap<TestParams, TestResponse>('/api/test', { extractResponse: false })
 // 使用
 getMethod2(params).then((res) => {
   console.log(res.data.a)
@@ -44,7 +44,7 @@ getMethod2(params).then((res) => {
 const getMethod3 = request.getWrap<TestParams, TestResponse>('/api/test')
 // 使用时设置返回服务器端原始数据
 getMethod3(params, {
-  extract: true,
+  extractResponse: true,
 }).then((res) => {
   console.log(res.a)
 })
@@ -66,6 +66,8 @@ getMethod5({ id: '1', b: 1 }).then((res) => {
 // 封装6：不统一处理错误，由调用者处理。以及其他参数设置
 const getMethod6 = request.getWrap<TestParams, TestResponse>('/api/test', { handleError: false, showLoading: false })
 // 使用
-getMethod6(params).catch((err: AxiosError) => {
+getMethod6(params).then((res) => {
+  console.log(res.a)
+}).catch((err: AxiosError) => {
   console.log(err)
 })
