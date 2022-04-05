@@ -12,7 +12,7 @@
 - 新增了以下配置项：
   - **handleError**：是否统一处理错误，默认为 `true`。具体的错误处理方式需要根据自身业务需求完善。
   - **showLoading**：是否显示 loading 状态，默认为 `true`。具体的显示方式需要根据自身业务需求完善。
-  - **extract**：返回的数据是否进行提取处理，默认为 `true`。具体的提取方式需要根据后端接口格式修改。
+  - **extractResponse**：返回的数据是否进行提取处理，默认为 `true`。具体的提取方式需要根据后端接口格式修改。
 - 添加了常见错误情况的处理。
 
 ### 代码目录及文件说明
@@ -45,7 +45,7 @@ request.get<TestResponse>('/api/test').then((res) => {
   console.log(res.a)
 })
 // 常规使用2：返回服务器端原始数据
-request.get<TestResponse>('/api/test', { extract: false }).then((res) => {
+request.get<TestResponse>('/api/test', { extractResponse: false }).then((res) => {
   console.log(res.data.a)
 })
 ```
@@ -61,7 +61,7 @@ getMethod1(params).then((res) => {
   console.log(res.a)
 })
 // 封装2：封装为返回服务器端原始数据
-const getMethod2 = request.getWrap<TestParams, TestResponse>('/api/test', { extract: false })
+const getMethod2 = request.getWrap<TestParams, TestResponse>('/api/test', { extractResponse: false })
 // 使用
 getMethod2(params).then((res) => {
   console.log(res.data.a)
@@ -71,7 +71,7 @@ getMethod2(params).then((res) => {
 const getMethod3 = request.getWrap<TestParams, TestResponse>('/api/test')
 // 使用时设置返回服务器端原始数据
 getMethod3(params, {
-  extract: true,
+  extractResponse: true,
 }).then((res) => {
   console.log(res.a)
 })
@@ -93,12 +93,14 @@ getMethod5({ id: '1', b: 1 }).then((res) => {
 // 封装6：不统一处理错误，由调用者处理。以及其他参数设置
 const getMethod6 = request.getWrap<TestParams, TestResponse>('/api/test', { handleError: false, showLoading: false })
 // 使用
-getMethod6(params).catch((err: AxiosError) => {
+getMethod6(params).then((res) => {
+  console.log(res.a)
+}).catch((err: AxiosError) => {
   console.log(err)
 })
 ```
 
-### 开发调试
+### 开发调试和运行项目
 
 1. 使用 `npm run dev` 命令可以即时编译 ts 文件。
 2. 使用 `npm run test` 命令可以运行测试代码。
