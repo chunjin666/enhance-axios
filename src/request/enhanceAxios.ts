@@ -196,7 +196,7 @@ export interface AxiosStaticEnhanced<ServerResponse = any> extends AxiosInstance
   create(config?: CustomRequestConfig<any>): AxiosInstanceEnhanced<ServerResponse>
   Cancel: CancelStatic
   CancelToken: CancelTokenStatic
-  Axios: AxiosEnhanced
+  Axios: AxiosEnhanced<ServerResponse>
   readonly VERSION: string
   isCancel(value: any): boolean
   all<T>(values: Array<T | Promise<T>>): Promise<T[]>

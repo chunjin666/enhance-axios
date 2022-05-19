@@ -6,7 +6,8 @@
   "module": "src/index.ts",
   "scripts": {
     "dev": "tsc --watch",
-    "test": "jest"
+    "test": "jest --testPathIgnorePatterns=__tests__\\utils.ts --silent",
+    "test:cov": "jest --testPathIgnorePatterns=__tests__\\utils.ts --silent --coverage"
   },
   "repository": {
     "type": "git",

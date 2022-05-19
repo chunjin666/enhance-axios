@@ -1,6 +1,8 @@
 .vscode
 node_modules
 lib
+coverage
 
+*.local.*
 package-lock.json
 yarn.lock
